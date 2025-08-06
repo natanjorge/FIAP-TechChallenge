@@ -1,0 +1,57 @@
+# Otimização de Rotas de Entregas (ERP Protheus)
+
+Este projeto demonstra como integrar algoritmos de inteligência artificial, em especial Algoritmo Genético, com o ERP Protheus para **otimizar rotas de entregas** de clientes. O objetivo é encontrar a melhor ordem de visitas, minimizando o tempo ou a distância total das viagens, com dados reais do sistema.
+
+---
+
+## Funcionalidades
+
+- **Busca e seleção de roteiros:** Busca inteligente para encontrar roteiros disponíveis no banco Protheus.
+- **Grid editável:** Visualize e edite os clientes da rota antes de otimizar.
+- **Otimização de rota:** Dois métodos disponíveis:
+  - **Algoritmo Genético** (busca global por menor distância)
+  - **Greedy (Vizinho Mais Próximo)** (heurística clássica para comparação)
+- **Visualização interativa:** Rotas otimizadas exibidas em mapa (Folium) com link direto para Google Maps.
+- **Comparativo de performance:** Mostra a eficiência percentual entre os dois métodos em cada execução.
+- **Integração com o Protheus:** Dados lidos e gravados direto no banco de dados via pyodbc.
+
+---
+
+## Como funciona
+
+1. **Conecta ao banco Protheus** (SQL Server).
+2. Busca roteiros (tabela ZZY), carrega entregas (ZZZ), dados de clientes (SA1).
+3. Permite editar as entregas antes de otimizar.
+4. Executa o algoritmo escolhido e exibe o resultado visualmente.
+5. Mostra o ganho percentual do Algoritmo Genético sobre o método tradicional.
+
+---
+
+## Requisitos
+
+- Python 3.8+
+- SQL Server com base Protheus (tabelas ZZY990, ZZZ990, SA1990, campos customizados de latitude/longitude)
+- Bibliotecas:
+  - streamlit
+  - pandas
+  - numpy
+  - pyodbc
+  - folium
+  - streamlit-folium
+
+---
+
+## Como rodar
+
+```bash
+# Clone o repositório
+git clone https://github.com/seu-usuario/seu-repo.git
+cd seu-repo
+
+# Instale as dependências
+pip install -r requirements.txt
+
+# Ajuste as configurações de conexão (servidor, usuário, senha) no arquivo app.py
+
+# Rode o sistema
+streamlit run app.py
